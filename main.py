@@ -21,23 +21,22 @@ import requests
 import random
 import hashlib
 #---Flask Keep Alive ---
-from flask import Flask
-from threading import Thread
-app = Flask('')
-@app.route('/')
-def home():
-    return "🤖 ABHI 𝐂𝐎𝐃𝐄𝐑 🦁 is Running!"
-@app.route('/health')
-def health():
-    return {"status": "healthy", "uptime": get_uptime()}
-def run_flask():
-    port = int(os.environ.get("PORT", 8080))
-    app.run(host='0.0.0.0', port=port)
-def keep_alive():
-    t = Thread(target=run_flask)
-    t.daemon = True
-    t.start()
-    print("✅ Flask Keep-Alive server started.")
+# from flask import Flask
+# import threading
+
+# flask_app = Flask(__name__)
+
+# @flask_app.route("/")
+# def home():
+#     return "Bot is running"
+
+# def run_flask():
+#     flask_app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 10000)))
+
+# threading.Thread(target=run_flask, daemon=True).start()
+
+# bot.infinity_polling(skip_pending=True)
+
 #--- End Flask Keep Alive ---
 #--- Configuration ---
 TOKEN = '8542572147:AAGrZ7o1-SRuH0HEQSKsuDM3voRyCQq8yxg'
@@ -1727,7 +1726,7 @@ def main():
     logger.info(f"📁 𝐔𝐩𝐥𝐨𝐚𝐝 𝐃𝐢𝐫: {UPLOAD_BOTS_DIR}")
     logger.info(f"💾 𝐃𝐚𝐭𝐚𝐛𝐚𝐬𝐞: {DATABASE_PATH}")
     logger.info("=" * 50)
-    keep_alive()
+  #  keep_alive()
     while True:
         try:
             logger.info("🚀 𝐒𝐭𝐚𝐫𝐭𝐢𝐧𝐠 𝐛𝐨𝐭 𝐩𝐨𝐥𝐥𝐢𝐧𝐠...")
@@ -1744,4 +1743,4 @@ def main():
 
 if __name__ == "__main__":
     print("Bot started")
-    app.run_polling()
+    bot.infinity_polling(skip_pending=True)
